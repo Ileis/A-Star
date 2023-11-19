@@ -3,9 +3,7 @@ package Algorithms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-
 import Structures.Graph.Edge;
-
 import Structures.Graph.Graph;
 import Structures.UnionFind.UnionFind;
 
@@ -34,6 +32,7 @@ public class AGM {
             Float cost = e.getCost();
 
             if(!setOfVertices.find(firstVertex).equals(setOfVertices.find(secondVertex))){
+                setOfVertices.union(firstVertex, secondVertex);
                 S.setCost(firstVertex, secondVertex, cost);
                 edgesCounter++;
             }

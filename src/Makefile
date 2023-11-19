@@ -1,2 +1,2 @@
 make:
-	javac *.java Structures/City/*.java Structures/Graph/*.java Structures/UnionFind/*.java
+	javac *.java Structures/City/*.java Structures/Graph/*.java Structures/UnionFind/*.java Algorithms/*.java
