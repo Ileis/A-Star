@@ -1,5 +1,8 @@
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Structures.City.City;
@@ -57,5 +60,15 @@ public class App {
         }
 
         return map;
+    }
+
+    public static void writeOutput(String out){
+
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))){
+            writer.write(out);
+                
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
