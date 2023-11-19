@@ -36,6 +36,37 @@ public class Graph <T>{
         return false;
     }
 
+    public ArrayList<Edge<T>> getAllNeighborEdges(T element){
+        ArrayList<Edge<T>> allNeighborEdges = new ArrayList<>();
+
+        for(int i = 0; i < this.vertices.size(); i++){
+            T neighbor = this.vertices.get(i);
+
+            allNeighborEdges.add(new Edge<T>(element, neighbor, this.getCost(element, neighbor)));
+        }
+
+        return allNeighborEdges;
+    }
+
+    public ArrayList<T> getAllVertices(){
+        return new ArrayList<T>(vertices);
+    }
+
+    public ArrayList<Edge<T>> getAllEdges(){
+        ArrayList<Edge<T>> allEdges = new ArrayList<>();
+
+        for(int i = 0; i < this.vertices.size(); i++){
+            for(int j = 0; j < this.vertices.size(); j++){
+                T element1 = this.vertices.get(i);
+                T element2 = this.vertices.get(j);
+
+                allEdges.add(new Edge<T>(element1, element2, this.getCost(element1, element2)));
+            }
+        }
+
+        return allEdges;
+    }
+
     public float getTotalCost(){
         float acc = 0;
 
