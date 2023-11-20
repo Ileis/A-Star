@@ -17,30 +17,31 @@ public class AGM {
         PriorityQueue<Edge<T>> priorityQueueEdges = new PriorityQueue<>(comparator);
 
         ArrayList<Edge<T>> allEdges = G.getAllEdges();
-
-        System.out.println(allEdges);
-
         priorityQueueEdges.addAll(allEdges);
 
         UnionFind<T> setOfVertices = new UnionFind<>(vertices);
 
         int edgesCounter = 0;
 
-        // Verificar se o heap está vazio e verificar se a aresta é diferente de nulo
-        while(edgesCounter < vertices.size()){
+        while(edgesCounter < (vertices.size() - 1) && vertices.size() > 1){
+
             Edge<T> e = priorityQueueEdges.poll();
 
-            T firstVertex = e.getFirstVertex();
-            T secondVertex = e.getSecondVertex();
-            Float cost = e.getCost();
+            if(e != null){
+                T firstVertex = e.getFirstVertex();
+                T secondVertex = e.getSecondVertex();
+                Float cost = e.getCost();
 
-            if(!setOfVertices.find(firstVertex).equals(setOfVertices.find(secondVertex))){
-                setOfVertices.union(firstVertex, secondVertex);
-                S.setCost(firstVertex, secondVertex, cost);
-                edgesCounter++;
+                T nameSet1 = setOfVertices.find(firstVertex);
+                T nameSet2 = setOfVertices.find(secondVertex);
+
+                if(!nameSet1.equals(nameSet2)){
+                    setOfVertices.union(firstVertex, secondVertex);
+                    S.setCost(firstVertex, secondVertex, cost);
+                    edgesCounter++;
+                }
             }
         }
-
         return S;
     }
 

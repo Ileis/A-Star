@@ -11,8 +11,8 @@ public class Graph <T>{
     public void printMatrix(){
         for(int i = 0; i < this.vertices.size(); i++){
             for(int j = 0; j < this.vertices.size(); j++){
-                System.out.print(String.format("%6.2f", this.adjMatrix[i][j]));
-                if(j < (this.vertices.size() - 1)) System.out.print(" ");
+                System.out.print(String.format(this.vertices.get(i) + "<->" + this.vertices.get(j) + ":" + "%f", this.adjMatrix[i][j]));
+                if(j < (this.vertices.size() - 1)) System.out.print(", ");
             }
             System.out.println();
         }
@@ -66,7 +66,7 @@ public class Graph <T>{
         ArrayList<Edge<T>> allEdges = new ArrayList<>();
 
         for(int i = 0; i < this.vertices.size(); i++){
-            for(int j = 0; j < this.vertices.size(); j++){
+            for(int j = 0; j < i; j++){
                 T element1 = this.vertices.get(i);
                 T element2 = this.vertices.get(j);
 
@@ -82,7 +82,8 @@ public class Graph <T>{
 
         for(int i = 0; i < this.vertices.size(); i++){
             for(int j = 0; j < i; j++){
-                acc += this.adjMatrix[i][j];
+                if(this.adjMatrix[i][j] != null)
+                    acc += this.adjMatrix[i][j];
             }
         }
 
@@ -100,6 +101,5 @@ public class Graph <T>{
         }
 
         return S;
-
     }
 }

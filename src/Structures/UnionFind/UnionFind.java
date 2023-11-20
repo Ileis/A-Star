@@ -119,17 +119,17 @@ public class UnionFind <T>{
             if(i < (this.disjointSet.size() - 1)) out += ", ";
         }
 
-        // out += "]\n[";
+        out += "]\n[";
 
-        // for(int i = 0; i < this.disjointSet.size(); i++){
-        //     NodeUnionFind element = this.get(i);
+        for(int i = 0; i < this.disjointSet.size(); i++){
+            NodeUnionFind element = this.get(i);
             
-        //     if(element.parent == i){
-        //         out += "|" + element.key.toString() + "|=" + element.size + " ";
+            if(element.parent == i){
+                out += "|" + element.key.toString() + "|=" + element.size + " ";
                 
-        //         if(i < (this.disjointSet.size() - 1)) out += ", ";
-        //     }
-        // }
+                // if(i < (this.disjointSet.size() - 1)) out += ", ";
+            }
+        }
 
         out += "]";
 

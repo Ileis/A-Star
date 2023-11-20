@@ -45,13 +45,17 @@ public class aStar {
             if(border.isEmpty()) break;
 
             node = border.poll();
+
+            // System.out.println(node.key + ", fn:" + node.getFn() + ", gn:" + node.gn + ", hn:" + node.hn);
+
             ArrayList<City> path = getPath(node);
 
             if(path.size() == (vertices.size() + 1) && node.key.equals(initialCity)) break;
 
             ArrayList<Edge<City>> neighbors = map.getAllNeighborEdges(node.key);
-            ArrayList<City> verticesInducedSubgraph = new ArrayList<City>(path);
-            verticesInducedSubgraph.remove(initialCity);
+            ArrayList<City> verticesInducedSubgraph = new ArrayList<City>(vertices);
+            verticesInducedSubgraph.removeAll(path);
+            verticesInducedSubgraph.add(initialCity);
 
             float hnNode = AGM.kruskal(map.inducedSubgraphByVertices(verticesInducedSubgraph)).getTotalCost();
 
@@ -70,7 +74,7 @@ public class aStar {
         Float pathCost = node.gn;
 
         System.out.print(path);
-        System.out.println(" " + pathCost);
+        System.out.println(" " + String.format("%f", pathCost));
     }
 
     public static <T> ArrayList<T> getPath(Node<T> node){

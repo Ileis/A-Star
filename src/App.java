@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import Algorithms.aStar;
 import Structures.City.City;
 import Structures.Graph.Graph;
@@ -42,10 +41,11 @@ public class App {
             }
         }
 
-        // G.printMatrix();
-        
-        aStar.aStarAlgorithm(cities.get(0), G);
+        // aStar.aStarAlgorithm(G.getAllVertices().get(0), G);
 
+        for(int i = 0; i < cities.size(); i++){
+            aStar.aStarAlgorithm(G.getAllVertices().get(i), G);
+        }
     }
 
     public static ArrayList<City> readFileCities(String fileName) throws FileNotFoundException{
