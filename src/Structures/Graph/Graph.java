@@ -8,6 +8,16 @@ public class Graph <T>{
     private ArrayList<T> vertices;
     private Float adjMatrix[][];
 
+    public void printMatrix(){
+        for(int i = 0; i < this.vertices.size(); i++){
+            for(int j = 0; j < this.vertices.size(); j++){
+                System.out.print(String.format("%6.2f", this.adjMatrix[i][j]));
+                if(j < (this.vertices.size() - 1)) System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
     public Graph(Collection<T> vertices){
         this.vertices = new ArrayList<>(vertices);
         this.adjMatrix = new Float[this.vertices.size()][this.vertices.size()];

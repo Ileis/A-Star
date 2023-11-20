@@ -5,7 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import Algorithms.aStar;
 import Structures.City.City;
+import Structures.Graph.Graph;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -28,7 +31,20 @@ public class App {
             return;
         }
 
-        System.out.println(cities);
+        Graph<City> G = new Graph<City>(cities);
+
+        for(int i = 0; i < cities.size(); i++){
+            for(int j = 0; j < cities.size(); j++){
+                City city1 = cities.get(i);
+                City city2 = cities.get(j);
+
+                G.setCost(city1, city2, City.distance(city1, city2));
+            }
+        }
+
+        // G.printMatrix();
+        
+        aStar.aStarAlgorithm(cities.get(0), G);
 
     }
 

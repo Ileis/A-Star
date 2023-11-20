@@ -17,6 +17,9 @@ public class AGM {
         PriorityQueue<Edge<T>> priorityQueueEdges = new PriorityQueue<>(comparator);
 
         ArrayList<Edge<T>> allEdges = G.getAllEdges();
+
+        System.out.println(allEdges);
+
         priorityQueueEdges.addAll(allEdges);
 
         UnionFind<T> setOfVertices = new UnionFind<>(vertices);
