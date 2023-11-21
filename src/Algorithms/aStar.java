@@ -35,6 +35,7 @@ public class aStar {
         Comparator<Node<City>> comparator = Comparator.comparingDouble(node -> node.getFn());
         PriorityQueue<Node<City>> border = new PriorityQueue<Node<City>>(comparator);
         ArrayList<City> vertices = map.getAllVertices();
+        ArrayList<Edge<City>> edges = map.getAllEdges();
 
         border.add(initialNode);
 
@@ -57,7 +58,8 @@ public class aStar {
             verticesInducedSubgraph.removeAll(path);
             verticesInducedSubgraph.add(initialCity);
 
-            float hnNode = AGM.kruskal(map.inducedSubgraphByVertices(verticesInducedSubgraph)).getTotalCost();
+            float hnNode = AGM.costKruskal(Graph.inducedSubgraphByVertices(edges, verticesInducedSubgraph));
+            // System.out.println(edges);
 
             // se edge.getSecondVertex está na lista mas apresenta um peso maior, substitua
             for(Edge<City> edge : neighbors){

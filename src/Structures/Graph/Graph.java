@@ -93,9 +93,10 @@ public class Graph <T>{
     public static <T> ArrayList<Edge<T>> inducedSubgraphByVertices(ArrayList<Edge<T>> edges, ArrayList<T> vertices){
 
         ArrayList<Edge<T>> S = new ArrayList<Edge<T>>();
+        ArrayList<Edge<T>> allEdges = new ArrayList<Edge<T>>(edges);
 
-        while(!edges.isEmpty()){
-            Edge<T> e = edges.remove(edges.size() - 1);
+        while(!allEdges.isEmpty()){
+            Edge<T> e = allEdges.remove(allEdges.size() - 1);
 
             T firstVertex = e.getFirstVertex();
             T secondVertex = e.getSecondVertex();

@@ -41,11 +41,11 @@ public class App {
             }
         }
 
-        aStar.aStarAlgorithm(G.getAllVertices().get(0), G);
+        // aStar.aStarAlgorithm(G.getAllVertices().get(0), G);
 
-        // for(int i = 0; i < cities.size(); i++){
-        //     aStar.aStarAlgorithm(G.getAllVertices().get(i), G);
-        // }
+        for(int i = 0; i < cities.size(); i++){
+            aStar.aStarAlgorithm(G.getAllVertices().get(i), G);
+        }
     }
 
     public static ArrayList<City> readFileCities(String fileName) throws FileNotFoundException{
