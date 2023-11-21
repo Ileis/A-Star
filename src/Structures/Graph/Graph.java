@@ -90,6 +90,24 @@ public class Graph <T>{
         return acc;
     }
 
+    public static <T> ArrayList<Edge<T>> inducedSubgraphByVertices(ArrayList<Edge<T>> edges, ArrayList<T> vertices){
+
+        ArrayList<Edge<T>> S = new ArrayList<Edge<T>>();
+
+        while(!edges.isEmpty()){
+            Edge<T> e = edges.remove(edges.size() - 1);
+
+            T firstVertex = e.getFirstVertex();
+            T secondVertex = e.getSecondVertex();
+
+            if(vertices.contains(firstVertex) && vertices.contains(secondVertex)){
+                S.add(e);
+            }
+        }
+
+        return S;
+    }
+
     public Graph<T> inducedSubgraphByVertices(Collection<T> vertices){
 
         Graph<T> S = new Graph<>(vertices);

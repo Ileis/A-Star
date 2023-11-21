@@ -59,6 +59,7 @@ public class aStar {
 
             float hnNode = AGM.kruskal(map.inducedSubgraphByVertices(verticesInducedSubgraph)).getTotalCost();
 
+            // se edge.getSecondVertex está na lista mas apresenta um peso maior, substitua
             for(Edge<City> edge : neighbors){
                 
                 if(!path.contains(edge.getSecondVertex()) || (path.size() == vertices.size() && edge.getSecondVertex().equals(initialCity))){

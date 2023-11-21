@@ -66,9 +66,11 @@ public class UnionFind <T>{
     public T find(T element){
         NodeUnionFind node = this.get(element);
 
+        T setName = this.find(node).key;
+
         if(node != null) pathCompression(node);
 
-        return this.find(node).key;
+        return setName;
     }
 
     // -----------------------------------------------------------------
@@ -89,8 +91,8 @@ public class UnionFind <T>{
     public boolean union(T element1, T element2){
         if(this.contains(element1) && this.contains(element2)){
 
-            NodeUnionFind root1 = this.get(element1);
-            NodeUnionFind root2 = this.get(element2);
+            NodeUnionFind root1 = this.find(this.get(element1));
+            NodeUnionFind root2 = this.find(this.get(element2));
 
             if(!root1.equals(root2)){
 
